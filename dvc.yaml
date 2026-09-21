@@ -1,0 +1,11 @@
+stages:
+  preprocessing_data:
+    cmd: python src/preprocessing_data.py
+    deps:
+    - data/rows/01_dataset.csv
+    - src/preprocessing_data.py
+    outs:
+    - data/processed/test_df_x.csv
+    - data/processed/test_df_y.csv
+    - data/processed/train_df_x.csv
+    - data/processed/train_df_y.csv

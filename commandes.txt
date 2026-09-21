@@ -1,0 +1,12 @@
+--c'est la commande que j'ai utiliser pour creer le stage dvc de preprocessing de donnees
+uv run dvc stage add -n preprocessing_data `
+  -d data/rows/01_dataset.csv `
+  -d src/preprocessing_data.py `
+  -o src/processed/test_df_x.csv `
+  -o src/processed/train_df_x.csv `
+  -o src/processed/test_df_y.csv `
+  -o src/processed/train_df_y.csv `
+  python src/preprocessing_data.py
+
+--pour executer notre pipeline
+uv run dvc repro

@@ -1,0 +1,21 @@
+[project]
+name = "prediction-esperance-vie"
+version = "0.1.0"
+description = "Prediction de l'Esperance de Vie"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "dvc>=3.67.1",
+    "matplotlib>=3.10.9",
+    "pandas>=2.3.3",
+    "scikit-learn>=1.7.2",
+    "seaborn>=0.13.2",
+]
+
+[dependency-groups]
+dev = [
+    "dvc>=3.67.1",
+    "kagglehub>=1.0.2",
+    "pytest>=9.1.1",
+    "ruff>=0.16.8",
+]
