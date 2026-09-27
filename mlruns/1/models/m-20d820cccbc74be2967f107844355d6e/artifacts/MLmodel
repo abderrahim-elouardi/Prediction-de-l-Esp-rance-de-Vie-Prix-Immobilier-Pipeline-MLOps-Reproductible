@@ -1,0 +1,24 @@
+artifact_path: "file:///C:/Users/HP/Documents/projects/Prediction de l\u2019Esperance\
+  \ de Vie\u2013 Modelisation Machine Learning & EDA & MLOPs/mlruns/1/models/m-20d820cccbc74be2967f107844355d6e/artifacts"
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.12.0
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.1
+    skops_trusted_types: null
+mlflow_version: 3.16.1
+model_id: m-20d820cccbc74be2967f107844355d6e
+model_size_bytes: 10500
+model_uuid: m-20d820cccbc74be2967f107844355d6e
+prompts: null
+run_id: 39afe12dd36c4b63a73165f984abeb6f
+utc_time_created: '2026-09-27 17:24:46.331362'

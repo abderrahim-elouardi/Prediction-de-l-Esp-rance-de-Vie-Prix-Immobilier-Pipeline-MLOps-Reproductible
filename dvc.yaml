@@ -9,3 +9,10 @@ stages:
     - data/processed/test_df_y.csv
     - data/processed/train_df_x.csv
     - data/processed/train_df_y.csv
+  training_model:
+    cmd: python src\training_model.py
+    deps:
+    - data\processed\train_df_x.csv
+    - data\processed\train_df_y.csv
+    outs:
+    - models/mon_modele_elasticnet.joblib

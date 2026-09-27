@@ -9,8 +9,8 @@ stages:
       size: 100188
     - path: src/preprocessing_data.py
       hash: md5
-      md5: a2fc4678040deafe2f28386a990bd225
-      size: 3580
+      md5: 6200d2c0a9339fb5d1b12853f24f5650
+      size: 3830
     outs:
     - path: data/processed/test_df_x.csv
       hash: md5
@@ -28,3 +28,19 @@ stages:
       hash: md5
       md5: 9b56235e32c16287ad3fe07c54fb6009
       size: 13513
+  training_model:
+    cmd: python src\training_model.py
+    deps:
+    - path: data\processed\train_df_x.csv
+      hash: md5
+      md5: a87ad7aef918280caa03ef10bf353289
+      size: 98754
+    - path: data\processed\train_df_y.csv
+      hash: md5
+      md5: 9b56235e32c16287ad3fe07c54fb6009
+      size: 13513
+    outs:
+    - path: models/mon_modele_elasticnet.joblib
+      hash: md5
+      md5: f1e1c7df478660d4e7d106fc784920ac
+      size: 1071

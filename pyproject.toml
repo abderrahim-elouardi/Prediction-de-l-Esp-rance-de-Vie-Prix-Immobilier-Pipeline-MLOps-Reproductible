@@ -16,6 +16,7 @@ dependencies = [
 dev = [
     "dvc>=3.67.1",
     "kagglehub>=1.0.2",
+    "mlflow>=3.16.1",
     "pytest>=9.1.1",
     "ruff>=0.16.8",
 ]

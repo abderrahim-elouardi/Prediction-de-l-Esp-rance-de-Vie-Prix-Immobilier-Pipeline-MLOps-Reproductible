@@ -55,11 +55,10 @@ def encode(train_df_x , test_df_x):
     test_df_x[columns_to_encode] = oe.transform(test_df_x[columns_to_encode])
     return train_df_x , test_df_x
 
-def split_data(df_preprocessed , test_size=0.15,random_state=123 , shuffle=True):
-    X = df_preprocessed.drop(columns=["Price"])
-    y = df_preprocessed["Price"]
-    train_df_x , test_df_x , train_df_y , test_df_y  = train_test_split(X , y , test_size=0.15,random_state=123 , shuffle=True)
-    return train_df_x , test_df_x , train_df_y , test_df_y 
+def split_data(X , y , test_size=0.15,random_state=123 , shuffle=True):
+    # X = df_preprocessed.drop(columns=["Price"])
+    # y = df_preprocessed["Price"]
+    return  train_test_split(X , y , test_size=test_size,random_state=123 , shuffle=shuffle)
 
 def preprocessing_dataset(source_data_path , destinaiton_dir_path , coefficient_de_clôture):
     df = pd.read_csv(source_data_path)
