@@ -1,0 +1,19 @@
+# MLflow local tracking
+mlruns/
+mlflow.db
+
+# Artefacts de modèles
+models/*.joblib
+models/*.pkl
+
+# Données (gérées par DVC)
+data/raw/*
+data/processed/*
+!data/**/.gitkeep
+!data/**/*.dvc
+
+# Fichiers temporaires Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
