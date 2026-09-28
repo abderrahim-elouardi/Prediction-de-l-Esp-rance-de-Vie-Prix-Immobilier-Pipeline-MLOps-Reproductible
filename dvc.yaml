@@ -9,10 +9,25 @@ stages:
     - data/processed/test_df_y.csv
     - data/processed/train_df_x.csv
     - data/processed/train_df_y.csv
+
+
   training_model:
     cmd: python src\training_model.py
     deps:
     - data\processed\train_df_x.csv
     - data\processed\train_df_y.csv
+    - src\training_model.py
     outs:
-    - models/mon_modele_elasticnet.joblib
+    - models\elasticnet.joblib
+    - models\gradientboosting.joblib
+    - models\randomforest.joblib
+
+  validate:
+    cmd: python src/validating.py
+    deps:
+      - models/elasticnet.joblib
+      - models/randomforest.joblib
+      - models/gradientboosting.joblib
+      - src/validating.py
+    outs:
+      - models/champion_model.joblib

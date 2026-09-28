@@ -39,8 +39,44 @@ stages:
       hash: md5
       md5: 9b56235e32c16287ad3fe07c54fb6009
       size: 13513
-    outs:
-    - path: models/mon_modele_elasticnet.joblib
+    - path: src\training_model.py
       hash: md5
-      md5: f1e1c7df478660d4e7d106fc784920ac
-      size: 1071
+      md5: 919ff95d39de3c35af3fe5510da94847
+      size: 6118
+    outs:
+    - path: models\elasticnet.joblib
+      hash: md5
+      md5: 23d3fa7f8838ca1eac06579d52a3bcfb
+      size: 1032
+    - path: models\gradientboosting.joblib
+      hash: md5
+      md5: 2803707a487041f06f06c7e6d13b29b9
+      size: 142616
+    - path: models\randomforest.joblib
+      hash: md5
+      md5: 803b6e213a6a403602afa46de7dbe0d2
+      size: 13188257
+  validate:
+    cmd: python src/validating.py
+    deps:
+    - path: models/elasticnet.joblib
+      hash: md5
+      md5: 23d3fa7f8838ca1eac06579d52a3bcfb
+      size: 1032
+    - path: models/gradientboosting.joblib
+      hash: md5
+      md5: 2803707a487041f06f06c7e6d13b29b9
+      size: 142616
+    - path: models/randomforest.joblib
+      hash: md5
+      md5: 803b6e213a6a403602afa46de7dbe0d2
+      size: 13188257
+    - path: src/validating.py
+      hash: md5
+      md5: febfe52f37886ca3944a6be3984a284d
+      size: 3833
+    outs:
+    - path: models/champion_model.joblib
+      hash: md5
+      md5: 23d3fa7f8838ca1eac06579d52a3bcfb
+      size: 1032
