@@ -1,0 +1,5 @@
+.venv
+__pycache__
+.dvc/cache
+dvc.lock
+.pytest_cache

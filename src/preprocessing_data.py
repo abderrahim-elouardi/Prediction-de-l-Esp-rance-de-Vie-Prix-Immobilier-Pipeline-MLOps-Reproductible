@@ -1,8 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OrdinalEncoder , StandardScaler
-import os
-
+from pathlib import Path
 
 
 def drop_unuseful_columns(df):
@@ -87,11 +86,15 @@ def preprocessing_dataset(source_data_path , destinaiton_dir_path , coefficient_
     train_df_x , test_df_x = normalize(train_df_x , test_df_x)
     
     # encoding
-    train_df_x  , test_df_x = encode(train_df_x , test_df_x)
-    train_df_x.to_csv(os.path.join(destinaiton_dir_path,"train_df_x.csv") , index=False)
-    train_df_y.to_csv(os.path.join(destinaiton_dir_path,"train_df_y.csv") , index=False)
-    test_df_x.to_csv(os.path.join(destinaiton_dir_path,"test_df_x.csv") , index=False)
-    test_df_y.to_csv(os.path.join(destinaiton_dir_path,"test_df_y.csv") , index=False)
+    train_df_x , test_df_x = encode(train_df_x=train_df_x , test_df_x=test_df_x)
+    # Utilisation de pathlib pour forcer des chemins universels
+    dest_dir = Path(destinaiton_dir_path)
+    dest_dir.mkdir(parents=True, exist_ok=True)
+
+    train_df_x.to_csv(dest_dir / "train_df_x.csv", index=False)
+    train_df_y.to_csv(dest_dir / "train_df_y.csv", index=False)
+    test_df_x.to_csv(dest_dir / "test_df_x.csv", index=False)
+    test_df_y.to_csv(dest_dir / "test_df_y.csv", index=False)
 
 
 

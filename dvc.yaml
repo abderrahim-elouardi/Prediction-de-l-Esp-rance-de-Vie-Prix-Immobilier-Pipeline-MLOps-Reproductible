@@ -2,25 +2,24 @@ stages:
   preprocessing_data:
     cmd: python src/preprocessing_data.py
     deps:
-    - data/rows/01_dataset.csv
-    - src/preprocessing_data.py
+      - data/rows/01_dataset.csv
+      - src/preprocessing_data.py
     outs:
-    - data/processed/test_df_x.csv
-    - data/processed/test_df_y.csv
-    - data/processed/train_df_x.csv
-    - data/processed/train_df_y.csv
-
+      - data/processed/test_df_x.csv
+      - data/processed/test_df_y.csv
+      - data/processed/train_df_x.csv
+      - data/processed/train_df_y.csv
 
   training_model:
-    cmd: python src\training_model.py
+    cmd: python src/training_model.py
     deps:
-    - data\processed\train_df_x.csv
-    - data\processed\train_df_y.csv
-    - src\training_model.py
+      - data/processed/train_df_x.csv
+      - data/processed/train_df_y.csv
+      - src/training_model.py
     outs:
-    - models\elasticnet.joblib
-    - models\gradientboosting.joblib
-    - models\randomforest.joblib
+      - models/elasticnet.joblib
+      - models/gradientboosting.joblib
+      - models/randomforest.joblib
 
   validate:
     cmd: python src/validating.py
@@ -31,3 +30,16 @@ stages:
       - src/validating.py
     outs:
       - models/champion_model.joblib
+
+  evaluate:
+    cmd: python src/testing.py
+    deps:
+      - data/processed/test_df_x.csv
+      - data/processed/test_df_y.csv
+      - models/champion_model.joblib
+      - src/testing.py
+    metrics:
+      - metrics/test_metrics.json:
+          cache: false
+    outs:
+      - metrics/residuals_plot.png
